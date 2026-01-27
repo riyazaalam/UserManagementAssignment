@@ -16,7 +16,7 @@ class UserDAO
     {
         $user = User::findOrFail($id);
         $user->update($data);
-        // return $user;
+        //return $user;
         return $user->fresh(); // return updated model
     }
 
