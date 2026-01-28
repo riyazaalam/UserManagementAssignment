@@ -22,12 +22,17 @@ class UserService
         Cache::forget("user_{$id}");
         return $user;
     }
+    public function getUser(int $id)
+    {
+        return Cache::remember("user_{$id}", 60, fn() => $this->userBO->getUser($id));
+    }
 
     public function getAllUsers() {
-       return $this->userBO->getAllUsers();
+    //    return $this->userBO->getAllUsers();
         // We store the collection for 1 hour (3600 seconds)
-        // return Cache::remember('users_all', 3600, function() {
-        //     return $this->userBO->getAllUsers();
-        // });
+        return Cache::remember('users_all', 3600, function() {
+            return $this->userBO->getAllUsers();
+        });
     }
+
 }
