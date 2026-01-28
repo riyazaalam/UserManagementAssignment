@@ -19,7 +19,7 @@ class UserBO
 
     public function updateUser(int $id, array $data): User
     {
-        // Hash password only if provided
+       
         if (!empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         } else {

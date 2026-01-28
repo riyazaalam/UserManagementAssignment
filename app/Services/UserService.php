@@ -29,7 +29,7 @@ class UserService
 
     public function getAllUsers() {
     //    return $this->userBO->getAllUsers();
-        // We store the collection for 1 hour (3600 seconds)
+       
         return Cache::remember('users_all', 3600, function() {
             return $this->userBO->getAllUsers();
         });

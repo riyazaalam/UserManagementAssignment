@@ -23,14 +23,14 @@ class UserController extends Controller
     }
 
     public function update(UserRequest $request){
-        $id = $request->id; // get id from body
+        $id = $request->id; 
       
         $user = $this->userService->updateUser($id, $request->validated());
         return response()->json($user);
     }
 
     public function show(UserRequest $request){
-        $id = $request->id; // get id from body
+        $id = $request->id; 
         $user = $this->userService->getUser($id);
         return response()->json($user);
     }
